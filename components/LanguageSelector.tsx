@@ -1,35 +1,43 @@
-'use client'; // Add this directive to mark the component as a client component
+// /components/LanguageSelector.tsx
+'use client';
 
 import React from 'react';
-import { useRouter } from 'next/router';
-import AppRouterInstance from 'next/app';
-import { NextRouter } from 'next/router';
+import { useRouter, usePathname } from 'next/navigation';
+import { useLocale } from 'next-intl';
+import { Globe } from 'lucide-react';
+
 const LanguageSelector = () => {
- 
-  
-  const router: NextRouter = useRouter();
-  
+  const router = useRouter();
+  const pathname = usePathname();
+  const locale = useLocale();
+
   const languages = [
     { code: 'en', name: 'English' },
-    { code: 'bn', name: 'বাংলা' }, // Bengali
-    { code: 'mr', name: 'मराठी' }  // Marathi
+    { code: 'bn', name: 'বাংলা' }, 
+    { code: 'mr', name: 'मराठी' }
   ];
 
+  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const newLocale = e.target.value;
+    router.push(pathname.replace(`/${locale}`, `/${newLocale}`));
+  };
+
   return (
-    <div className="absolute top-4 right-4 z-10">
+    <div className="relative inline-block">
       <select
-        onChange={(e) => {
-          router.push(router.asPath, router.asPath, { locale: e.target.value });
-        }}
-        value={router.locale}
-        className="bg-[#F5E6D3] text-[#4A0E0E] px-4 py-2 rounded-md border-2 border-[#4A0E0E] focus:outline-none focus:ring-2 focus:ring-[#4A0E0E] appearance-none cursor-pointer"
+        onChange={handleChange}
+        value={locale}
+        className="appearance-none bg-transparent border-none text-[#F5E6D3] pr-8 pl-2 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-[#F5E6D3] cursor-pointer"
       >
         {languages.map((lang) => (
-          <option key={lang.code} value={lang.code}>
+          <option key={lang.code} value={lang.code} className="bg-[#4A0E0E] text-[#F5E6D3]">
             {lang.name}
           </option>
         ))}
       </select>
+      <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-[#F5E6D3]">
+        <Globe size={16} />
+      </div>
     </div>
   );
 };

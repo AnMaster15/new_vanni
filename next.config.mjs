@@ -1,16 +1,14 @@
-import { i18n } from './next-i18next.config.mjs'; // Use named import for i18n
+import createNextIntlPlugin from 'next-intl/plugin';
+
+const withNextIntl = createNextIntlPlugin('./i18n.ts');  // Reference to your i18n setup
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true, // Enable React's Strict Mode for development
-  swcMinify: true, // Enable the SWC compiler for faster builds and minification
+  reactStrictMode: true,
+  swcMinify: true,
   images: {
-    domains: ['cdn.usegalileo.ai'],
+    domains: ['cdn.usegalileo.ai'],  // Allowing images from specific domains
   },
 };
 
-// Combine and export both configurations
-export default {
-  ...nextConfig,
-  i18n, // Include i18n settings here
-};
+export default withNextIntl(nextConfig);
