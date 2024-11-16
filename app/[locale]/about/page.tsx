@@ -6,7 +6,7 @@ import { Globe, Headphones, Video, Users, Book, Zap, ArrowLeft } from 'lucide-re
 import LanguageSelector from '@/components/LanguageSelector';
 
 export default function AboutPage() {
-  const t = useTranslations('about');
+  const t = useTranslations('AboutPage');
 
   return (
     <>
@@ -24,7 +24,7 @@ export default function AboutPage() {
 }
 
 function HeroSection() {
-  const t = useTranslations('about');
+  const t = useTranslations('HeroSection');
   return (
     <div className="relative h-96 bg-[#4A0E0E] bg-opacity-90 backdrop-blur-md shadow-md overflow-hidden">
       <div className="absolute top-0 left-0 right-0 flex justify-between items-center p-4 z-10">
@@ -34,9 +34,9 @@ function HeroSection() {
       <div className="absolute inset-0 bg-opacity-50 bg-[url('/paisley-pattern.png')] mix-blend-overlay"></div>
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="text-center">
-          <Image src="/logo.png" alt={t('hero.logoAlt')} width={150} height={150} className="mx-auto mb-4" />
-          <h1 className="text-5xl font-bold text-[#F5E6D3] mb-4">{t('hero.title')}</h1>
-          <p className="text-2xl text-[#F5E6D3]">{t('hero.subtitle')}</p>
+          <Image src="/logo.png" alt={t('logoAlt')} width={150} height={150} className="mx-auto mb-4" />
+          <h1 className="text-5xl font-bold text-[#F5E6D3] mb-4">{t('title')}</h1>
+          <p className="text-2xl text-[#F5E6D3]">{t('subtitle')}</p>
         </div>
       </div>
     </div>
@@ -46,7 +46,6 @@ function HeroSection() {
 function MainContent() {
   return (
     <div className="max-w-6xl mx-auto px-4 py-12">
-     
       <MissionStatement />
       <Services />
       <ImpactSection />
@@ -56,7 +55,7 @@ function MainContent() {
 }
 
 function BackToHomeButton() {
-  const t = useTranslations('about');
+  const t = useTranslations('Navigation');
   return (
     <Link href="/" className="inline-flex items-center px-4 py-2 bg-[#F5E6D3] text-[#4A0E0E] rounded-md hover:bg-[#E6D2B5] transition-colors duration-300">
       <ArrowLeft className="mr-2 h-4 w-4" />
@@ -66,53 +65,53 @@ function BackToHomeButton() {
 }
 
 function MissionStatement() {
-  const t = useTranslations('about');
+  const t = useTranslations('MissionStatement');
   return (
     <section className="mb-16">
-      <h2 className="text-3xl font-bold mb-6 text-center">{t('mission.title')}</h2>
+      <h2 className="text-3xl font-bold mb-6 text-center">{t('title')}</h2>
       <div className="bg-white rounded-lg shadow-lg p-8 border-2 border-[#4A0E0E]">
-        <p className="text-lg mb-4">{t('mission.paragraph1')}</p>
-        <p className="text-lg">{t('mission.paragraph2')}</p>
+        <p className="text-lg mb-4">{t('paragraph1')}</p>
+        <p className="text-lg">{t('paragraph2')}</p>
       </div>
     </section>
   );
 }
 
 function Services() {
-  const t = useTranslations('about');
+  const t = useTranslations('Services');
   return (
     <section className="mb-16">
-      <h2 className="text-3xl font-bold mb-6 text-center">{t('services.title')}</h2>
+      <h2 className="text-3xl font-bold mb-6 text-center">{t('title')}</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <FeatureCard
           icon={<Globe className="h-12 w-12 text-[#FF9933]" />}
-          title={t('services.textTranslation.title')}
-          description={t('services.textTranslation.description')}
+          title={t('textTranslation.title')}
+          description={t('textTranslation.description')}
         />
         <FeatureCard
           icon={<Headphones className="h-12 w-12 text-[#FF9933]" />}
-          title={t('services.audioTranslation.title')}
-          description={t('services.audioTranslation.description')}
+          title={t('audioTranslation.title')}
+          description={t('audioTranslation.description')}
         />
         <FeatureCard
           icon={<Video className="h-12 w-12 text-[#FF9933]" />}
-          title={t('services.videoTranslation.title')}
-          description={t('services.videoTranslation.description')}
+          title={t('videoTranslation.title')}
+          description={t('videoTranslation.description')}
         />
         <FeatureCard
           icon={<Users className="h-12 w-12 text-[#FF9933]" />}
-          title={t('services.communityDriven.title')}
-          description={t('services.communityDriven.description')}
+          title={t('communityDriven.title')}
+          description={t('communityDriven.description')}
         />
         <FeatureCard
           icon={<Book className="h-12 w-12 text-[#FF9933]" />}
-          title={t('services.educationalResources.title')}
-          description={t('services.educationalResources.description')}
+          title={t('educationalResources.title')}
+          description={t('educationalResources.description')}
         />
         <FeatureCard
           icon={<Zap className="h-12 w-12 text-[#FF9933]" />}
-          title={t('services.realTimeTranslation.title')}
-          description={t('services.realTimeTranslation.description')}
+          title={t('realTimeTranslation.title')}
+          description={t('realTimeTranslation.description')}
         />
       </div>
     </section>
@@ -120,8 +119,8 @@ function Services() {
 }
 
 function ImpactSection() {
-  const t = useTranslations('about');
-  const impactItems = t.raw('impact.items');
+  const t = useTranslations('Impact');
+  const impactItems = t.raw('items');
 
   const getImpactArray = (items: any): string[] => {
     if (Array.isArray(items)) {
@@ -141,7 +140,7 @@ function ImpactSection() {
 
   return (
     <section className="mb-16">
-      <h2 className="text-3xl font-bold mb-6 text-center">{t('impact.title')}</h2>
+      <h2 className="text-3xl font-bold mb-6 text-center">{t('title')}</h2>
       <div className="bg-white rounded-lg shadow-lg p-8 border-2 border-[#4A0E0E]">
         {impactArray.length > 0 ? (
           <ul className="list-disc pl-6 space-y-4">
@@ -158,24 +157,24 @@ function ImpactSection() {
 }
 
 function CallToAction() {
-  const t = useTranslations('about');
+  const t = useTranslations('CallToAction');
   return (
     <section className="text-center">
-      <h2 className="text-3xl font-bold mb-6">{t('cta.title')}</h2>
-      <p className="text-lg mb-8">{t('cta.description')}</p>
+      <h2 className="text-3xl font-bold mb-6">{t('title')}</h2>
+      <p className="text-lg mb-8">{t('description')}</p>
     </section>
   );
 }
 
 function Footer() {
-  const t = useTranslations('about');
+  const t = useTranslations('Footer');
   return (
     <footer className="flex flex-col gap-6 px-5 py-10 text-center @container bg-[#4A0E0E] bg-opacity-90 backdrop-blur-md shadow-md text-[#F5E6D3]">
       <div className="flex flex-wrap items-center justify-center gap-6 @[480px]:flex-row @[480px]:justify-around">
-        <Link href="#" className="text-l text-base font-normal leading-normal min-w-40">{t('footer.helpCenter')}</Link>
-        <Link href="#" className="text-l text-base font-normal leading-normal min-w-40">{t('footer.contactSupport')}</Link>
-        <Link href="#" className="text-l text-base font-normal leading-normal min-w-40">{t('footer.productUpdates')}</Link>
-        <Link href="#" className="text-l text-base font-normal leading-normal min-w-40">{t('footer.pricing')}</Link>
+        <Link href="#" className="text-l text-base font-normal leading-normal min-w-40">{t('helpCenter')}</Link>
+        <Link href="#" className="text-l text-base font-normal leading-normal min-w-40">{t('contactSupport')}</Link>
+        <Link href="#" className="text-l text-base font-normal leading-normal min-w-40">{t('productUpdates')}</Link>
+        <Link href="#" className="text-l text-base font-normal leading-normal min-w-40">{t('pricing')}</Link>
       </div>
       <div className="flex flex-wrap justify-center gap-4">
         <SocialIcon href="#" icon="twitter" />
@@ -184,7 +183,7 @@ function Footer() {
         <SocialIcon href="#" icon="linkedin" />
         <SocialIcon href="#" icon="youtube" />
       </div>
-      <p className="text-l text-base font-normal leading-normal">{t('footer.copyright')}</p>
+      <p className="text-l text-base font-normal leading-normal">{t('copyright')}</p>
     </footer>
   );
 }

@@ -1,17 +1,22 @@
 {
-  "about": {
-    "backToHome": "Return",
-    "hero": {
+  "AboutPage": {
+    "pageTitle": "About Vaani Vista - Bridging Languages, Connecting Cultures",
+    "pageDescription": "Learn about Vaani Vista's mission to break down language barriers and foster global communication through innovative translation services."
+  },
+    "HeroSection": {
       "logoAlt": "Vaani Vista Logo",
       "title": "Vaani Vista",
       "subtitle": "Bridging Languages, Connecting Cultures"
     },
-    "mission": {
+    "Navigation": {
+      "backToHome": "Return"
+    },
+    "MissionStatement": {
       "title": "Our Mission",
       "paragraph1": "At Vaani Vista, we're dedicated to breaking down language barriers and fostering global communication.",
       "paragraph2": "Through innovative translation services, we empower individuals and communities to connect, share, and understand each other better."
     },
-    "services": {
+    "Services": {
       "title": "Our Services",
       "textTranslation": {
         "title": "Text Translation",
@@ -38,7 +43,7 @@
         "description": "Instant translation services for live communication."
       }
     },
-    "impact": {
+    "Impact": {
       "title": "Our Impact",
       "items": [
         "Connected over 1 million people across language barriers",
@@ -47,18 +52,16 @@
         "Provided educational resources in 50+ languages"
       ]
     },
-    "cta": {
+    "CallToAction": {
       "title": "Join Our Community",
       "description": "Be part of our mission to create a more connected world."
     },
-    "footer": {
+    "Footer": {
       "helpCenter": "Help Center",
       "contactSupport": "Contact Support",
       "productUpdates": "Product Updates",
       "pricing": "Pricing",
       "copyright": "© 2024 Vaani Vista. All rights reserved."
-    }
-
   },
     "Home": {
       "nav": {

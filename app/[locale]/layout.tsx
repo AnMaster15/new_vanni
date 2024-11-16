@@ -1,6 +1,6 @@
-// /app/[locale]/layout.tsx
 import { NextIntlClientProvider } from 'next-intl';
 import { notFound } from 'next/navigation';
+import { cookies } from 'next/headers';
 
 export async function generateStaticParams() {
   return [{ locale: 'en' }, { locale: 'bn' }, { locale: 'mr' }];
@@ -8,24 +8,30 @@ export async function generateStaticParams() {
 
 export default async function LocaleLayout({
   children,
-  params,
+  params: { locale },
 }: {
   children: React.ReactNode;
   params: { locale: string };
 }) {
-  let messages;
+  // Fallback to checking the cookie if middleware doesn't run
+  const cookieLocale = cookies().get('NEXT_LOCALE')?.value;
+  const selectedLocale = locale || cookieLocale || 'en'; // Default to 'en'
 
+  let messages;
   try {
-    // Adjust the path to import localization files correctly
-    messages = (await import(`../../locales/${params.locale}/about.json`)).default;
+    // Attempt to import messages for the selected locale
+    messages = (await import(`../../locales/${selectedLocale}/about.json`)).default;
   } catch (error) {
-    console.error(`Error loading messages for locale "${params.locale}":`, error);
-    notFound();
+    notFound(); // If locale is invalid, trigger a 404
   }
 
   return (
-    <NextIntlClientProvider locale={params.locale} messages={messages}>
-      {children}
-    </NextIntlClientProvider>
+    <html lang={selectedLocale}>
+      <body>
+        <NextIntlClientProvider locale={selectedLocale} messages={messages}>
+          {children}
+        </NextIntlClientProvider>
+      </body>
+    </html>
   );
 }

@@ -1,10 +1,12 @@
-// /components/LanguageSelector.tsx
 'use client';
-
 import React from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import { useLocale } from 'next-intl';
 import { Globe } from 'lucide-react';
+
+function setLanguage(locale: string) {
+  document.cookie = `NEXT_LOCALE=${locale}; path=/; max-age=31536000; SameSite=Lax`;
+}
 
 const LanguageSelector = () => {
   const router = useRouter();
@@ -13,13 +15,21 @@ const LanguageSelector = () => {
 
   const languages = [
     { code: 'en', name: 'English' },
-    { code: 'bn', name: 'বাংলা' }, 
+    { code: 'bn', name: 'বাংলা' },
     { code: 'mr', name: 'मराठी' }
   ];
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const newLocale = e.target.value;
-    router.push(pathname.replace(`/${locale}`, `/${newLocale}`));
+    
+    // Update the cookie to persist the language selection
+    setLanguage(newLocale);
+    
+    // Strip the current locale from the pathname and replace with the new one
+    const newPathname = pathname.replace(new RegExp(`^/${locale}`), '');
+    
+    // Push the new locale to the URL
+    router.push(`/${newLocale}${newPathname || '/'}`);
   };
 
   return (
